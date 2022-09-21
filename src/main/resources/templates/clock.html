@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>시계</title>
+</head>
+<body>
+  <h1>스프링 공부 - 시계</h1>
+  <p th:text="${now}">2022-09-21 14:27:35</p>
+  <p>
+      이름 : <span th:text="${person.name}">홍길동</span><br/>
+      나이 : <span th:text="${person.age}">22</span>세
+  </p>
+</body>
+<!--밑에처럼 적으면 안된다는....ㅋ... 왜..?-->
+<!--<script th:src="@{/js/common.js}"/>-->
+<script th:src="@{/js/common.js}"></script>
+</html>
