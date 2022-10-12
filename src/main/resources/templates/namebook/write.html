@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>방명록</title>
+</head>
+<body>
+<h1>방명록</h1>
+<form th:action="@{/namebook/write-save}" method="post">
+    <div>
+        <label>이름</label>
+        <input type="text" name="writer">
+    </div>
+
+    <div>
+        <label>내용</label>
+        <textarea name="content" cols="50" rows="10"></textarea>
+    </div>
+
+    <div>
+        <button>저장</button>
+    </div>
+
+</form>
+</body>
+</html>
