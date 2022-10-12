@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Song</title>
+
+    <link href="/css/song.css?1" rel="stylesheet">
+
+</head>
+<body>
+<h1>노래 목록</h1>
+
+<div>
+    <a href="add">추가</a>
+</div>
+
+<table class="list">
+    <thead>
+    <tr>
+        <th>제목</th>
+        <th>가수</th>
+        <th>작곡자</th>
+        <th>발표년도</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="item : ${list}">
+        <td><a th:href="@{view/{id}(id = ${item.idx})}" th:text="${item.title}"></a></td>
+        <td th:text="${item.singer}"></td>
+        <td th:text="${item.composer}"></td>
+        <td th:text="${item.year}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
