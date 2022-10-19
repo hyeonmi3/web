@@ -5,16 +5,15 @@ public class Song {
 
     private String title;
 
-    private String singer;
-
     private String composer;
 
     private int year;
 
-    public Song(String title, String singer, String composer, int year) {
+    private Artist artist;
+
+    public Song(String title, String composer, int year) {
         this.title = title;
         this.composer = composer;
-        this.singer = singer;
         this.year = year;
     }
 
@@ -34,14 +33,6 @@ public class Song {
         this.title = title;
     }
 
-    public String getSinger() {
-        return singer;
-    }
-
-    public void setSinger(String singer) {
-        this.singer = singer;
-    }
-
     public String getComposer() {
         return composer;
     }
@@ -56,5 +47,13 @@ public class Song {
 
     public void setYear(int year) {
         this.year = year;
+    }
+
+    public Artist getArtist() {
+        return artist;
+    }
+
+    public void setArtist(Artist artist) {
+        this.artist = artist;
     }
 }
