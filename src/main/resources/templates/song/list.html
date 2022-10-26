@@ -26,12 +26,26 @@
     <tbody>
     <tr th:each="item : ${list}">
         <td><a th:href="@{view/{id}(id = ${item.idx})}" th:text="${item.title}"></a></td>
-        <td th:text="${item.singer}"></td>
+        <td th:text="${item.artist.name}"></td>
         <td th:text="${item.composer}"></td>
         <td th:text="${item.year}"></td>
     </tr>
     </tbody>
 </table>
+
+<div>
+    <form action="list" method="get">
+        <select name="type">
+            <option>제목</option>
+            <option>발표년도</option>
+        </select>
+
+        <input type="text" name="query">
+
+        <button>검색</button>
+    </form>
+</div>
+
 
 </body>
 </html>

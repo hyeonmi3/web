@@ -40,10 +40,23 @@ public class SongController {
     }
 
     @GetMapping("/list")
-    public ModelAndView list() {
+    public ModelAndView list(
+            @RequestParam(value = "type", defaultValue = "제목") String type,
+            @RequestParam(value = "query", required = false) String query) {
         ModelAndView mv = new ModelAndView("song/list");
 
-        List<Song> list = songService.getList();
+        List<Song> list = null;
+        if (query != null && query.length() > 0) {
+            if (type.equals("발표년도")) {
+                int year = Integer.parseInt(query);
+                list = songService.getList(year);
+            } else {
+                list = songService.getList(query);
+            }
+        } else {
+            list = songService.getList();
+        }
+
         mv.addObject("list", list);
 
         return mv;

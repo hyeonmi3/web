@@ -1,6 +1,5 @@
 package study.spring.web.controller;
 
-// Conmponent의 자식 Controller
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +17,7 @@ import java.util.List;
 
 @Controller
 public class HomeController {
+
     private MemberService memberService;
 
     private NameBookService nameBookService;
@@ -27,19 +27,17 @@ public class HomeController {
         this.memberService = memberService;
     }
 
-    // RequestMapping /hello를 요청하면 밑에를 실행
-    // method를 넣어서 POST로만 들어올수 있게 함
-    // @RequestMapping(value = "/hello", method = RequestMethod.POST)
+    @Autowired
+    public void setNameBookService(NameBookService nameBookService) {
+        this.nameBookService = nameBookService;
+    }
 
-    // @PostMapping POST로만 받는다
+    //@RequestMapping(value = "/hello", method = RequestMethod.POST)
     @GetMapping("/hello")
     public String hello() {
-        // 컨트롤러한테 얘 뷰 이름은 hello야 라고 알려주는것.
-        // 그러면 templates에서 hello.HTML을 찾아서 return함
         return "hello";
     }
 
-    // value = {"/ad", "/sb" , "/헤헤"} 주소 여러개를 할수 있음
     @RequestMapping(value = {"/hi", "/abcd", "/dgsw.do"})
     public String hi() {
         return "hi";
@@ -55,18 +53,12 @@ public class HomeController {
         mv.addObject("now", time);
 
         Person person = new Person();
-        person.setName("현미");
-        person.setAge(1000);
+        person.setName("금현호");
+        person.setAge(25);
 
         mv.addObject("person", person);
 
         return mv;
-    }
-
-    @RequestMapping("/add")
-    public String add(@RequestParam("value1") int value1,
-                      @RequestParam("value2") int value2) {
-        return String.format("%d + %d = %d", value1, value2, value1 + value2);
     }
 
     @GetMapping("/signin")
@@ -123,5 +115,10 @@ public class HomeController {
         mv.addObject("list", list);
 
         return mv;
+    }
+
+    @GetMapping("/login")
+    public String login() {
+        return "login";
     }
 }
